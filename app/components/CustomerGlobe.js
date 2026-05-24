@@ -146,16 +146,16 @@ export default function CustomerGlobeSection() {
 
   // ── Arc color ─────────────────────────────────────────────────
   const arcColor = (d) => {
-    const isHov = hoveredRoute && d.from === hoveredRoute.from && d.to === hoveredRoute.to;
-    return isHov
-      ? ["rgba(26,25,22,0)", "rgba(26,25,22,0.9)", "rgba(26,25,22,0)"]
-      : ["rgba(26,25,22,0)", "rgba(26,25,22,0.35)", "rgba(26,25,22,0)"];
-  };
+  const isHov = hoveredRoute && d.from === hoveredRoute.from && d.to === hoveredRoute.to;
+  return isHov
+    ? ["rgba(0,0,0,0)", "rgba(0,0,0,0.95)", "rgba(0,0,0,0)"]
+    : ["rgba(0,0,0,0)", "rgba(0,0,0,0.6)", "rgba(0,0,0,0)"];   // was 0.35 → 0.6
+};
 
   const arcStroke = (d) => {
-    const isHov = hoveredRoute && d.from === hoveredRoute.from && d.to === hoveredRoute.to;
-    return isHov ? 1.2 : 0.5;
-  };
+  const isHov = hoveredRoute && d.from === hoveredRoute.from && d.to === hoveredRoute.to;
+  return isHov ? 1.8 : 0.9;   // was 1.2 / 0.5
+};
 
   return (
     <section className="relative bg-[#f5f4f0] font-sans flex flex-col p-4 sm:p-5 gap-3">
@@ -266,8 +266,8 @@ export default function CustomerGlobeSection() {
               arcEndLat="endLat"
               arcEndLng="endLng"
               arcColor={arcColor}
-              arcDashLength={0.015}
-              arcDashGap={0.015}
+              arcDashLength={0.04}       // longer dash = more visible streak
+              arcDashGap={0.03}
               arcDashAnimateTime={(d) => d.animMs}
               arcStroke={arcStroke}
               arcAltitudeAutoScale={0.45}
