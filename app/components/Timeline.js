@@ -342,42 +342,19 @@ export default function TimelineSection() {
             </div>
 
             {/* Tag row */}
-            <div
-              key={`tag-${activeIdx}`}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                marginBottom: 14,
-                animation: "tlUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.06s both",
-              }}
-            >
-              <div
-                style={{ width: 28, height: 1.5, background: "#c8a84b", flexShrink: 0 }}
-              />
-              <span
-                style={{
-                  fontSize: 10,
-                  fontWeight: 700,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#8a6f24",
-                }}
-              >
-                {m.tag}
-              </span>
-            </div>
+            
 
             {/* Title */}
             <h2
               key={`title-${activeIdx}`}
+              className="my-5"
               style={{
                 fontSize: "clamp(1.8rem, 4.5vw, 3.1rem)",
                 fontWeight: 800,
                 letterSpacing: "-0.04em",
                 lineHeight: 1.05,
                 color: "#0a0908",
-                margin: "0 0 16px",
+                
                 animation: "tlUp 0.55s cubic-bezier(0.22,1,0.36,1) 0.11s both",
               }}
             >

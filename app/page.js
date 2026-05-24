@@ -13,14 +13,12 @@ import ContactSection from "./components/Contact";
 import WorldNetworkSection from "./components/World";
 import GroupSection from "./components/Group";
 
-// Section order — Group is index 0 (no D; is the C target for index 1)
 const SECTIONS = [
   GroupSection,
   CustomerGlobeSection,
   TimelineSection,
   FrameScrollSection,
   FleetSection,
-  WorldNetworkSection,
   ClientsSection,
   TestimonialsSection,
   ContactSection,
@@ -32,8 +30,6 @@ export default function Home() {
   useEffect(() => {
     const wraps = wrapRefs.current.filter(Boolean);
 
-    // ── Set initial hidden state for sections not yet in viewport ──────────
-    // Group (index 0) is revealed by the hero slide-over — skip it
     wraps.forEach((el, i) => {
       if (i === 0) return;
       const { top, bottom } = el.getBoundingClientRect();
@@ -44,7 +40,6 @@ export default function Home() {
       }
     });
 
-    // Safety net: reveal any still-hidden sections after 2.5s
     const fallback = setTimeout(() => {
       wraps.forEach((el) => {
         if (el.style.opacity === "0") {
@@ -58,7 +53,6 @@ export default function Home() {
     const observers = [];
 
     wraps.forEach((el, i) => {
-      // ── D: one-shot entrance — section rises into view ──────────────────
       if (i > 0) {
         const dObs = new IntersectionObserver(
           ([entry]) => {
@@ -75,20 +69,17 @@ export default function Home() {
         observers.push(dObs);
       }
 
-      // ── C: previous section recedes as this one enters ──────────────────
       if (i > 0) {
         const cObs = new IntersectionObserver(
           ([entry]) => {
             const prev = wraps[i - 1];
             if (!prev) return;
             if (entry.isIntersecting) {
-              // Push previous section back
               prev.style.transition =
                 "transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s ease";
               prev.style.transform = "scale(0.96) translateY(-12px)";
               prev.style.opacity   = "0.78";
             } else if (entry.boundingClientRect.top > 0) {
-              // User scrolled back up — restore previous section
               prev.style.transition =
                 "transform 0.55s ease, opacity 0.55s ease";
               prev.style.transform = "scale(1) translateY(0)";
@@ -109,11 +100,27 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <DavidHazHero />
-      <div style={{ position: "relative", zIndex: 2 }}>
+    // ← Root wrapper: establishes stacking context
+    <div style={{ position: "relative", isolation: "isolate" }}>
+
+      {/* Hero sits at z-index 0 — sections scroll over it */}
+      <div style={{ position: "relative", zIndex: 0 }}>
+        <DavidHazHero />
+      </div>
+
+      {/* Sections wrapper: z-index 1 — scrolls over hero */}
+      <div style={{ position: "relative", zIndex: 1 }}>
         {SECTIONS.map((Section, i) => (
-          <div key={i} ref={(el) => { wrapRefs.current[i] = el; }}>
+          <div
+            key={i}
+            ref={(el) => { wrapRefs.current[i] = el; }}
+            style={{
+              position: "relative",
+              zIndex: 1,
+              // White bg so sections fully cover the hero as they scroll over
+              backgroundColor: "#f5f4f0",
+            }}
+          >
             <Section />
           </div>
         ))}

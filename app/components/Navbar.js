@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Anchor } from "lucide-react";
+import { Anchor, X, Menu } from "lucide-react";
 
 const NAV_ITEMS = ["Home", "About", "Service", "Fleet", "Clients", "Contact"];
 
 function LogoPlaceholder() {
   return (
-    <div className="w-10 h-10 rounded-lg bg-neutral-900 flex items-center justify-center shrink-0">
-      <Anchor size={18} className="text-white" strokeWidth={2} />
+    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-neutral-900 flex items-center justify-center shrink-0">
+      <Anchor size={16} className="text-white" strokeWidth={2} />
     </div>
   );
 }
@@ -19,7 +19,19 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   async function handleLogoClick() {
+    setMobileOpen(false);
     if (pathname !== "/") {
       await router.push("/");
     } else {
@@ -29,6 +41,7 @@ export default function Navbar() {
 
   async function navigateTo(item) {
     const id = item.toLowerCase();
+    setMobileOpen(false);
 
     if (item === "Home") {
       if (pathname !== "/") {
@@ -36,7 +49,6 @@ export default function Navbar() {
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      setMobileOpen(false);
       return;
     }
 
@@ -46,57 +58,47 @@ export default function Navbar() {
       } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
-      setMobileOpen(false);
       return;
     }
 
-    // For in-page sections: if not on home, navigate home first then scroll
     if (pathname !== "/") {
       await router.push("/");
-      // small delay to allow DOM to mount and settle
       setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 150);
     } else {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
-
-    setMobileOpen(false);
   }
 
   return (
     <>
-      {/* ── TOP LEFT — logo + company name ── */}
-      <div 
+      {/* ── TOP LEFT — logo ── */}
+      <div
         onClick={handleLogoClick}
-        className="fixed cursor-pointer z-50 top-0 left-0 bg-[#f5f4f0] backdrop-blur-sm px-5 py-4 sm:px-6 sm:py-4 rounded-br-2xl flex items-center gap-3 animate-fade-in"
+        className="fixed cursor-pointer z-50 top-0 left-0 bg-[#f5f4f0] px-4 py-3 sm:px-5 sm:py-4 rounded-br-2xl flex items-center gap-2.5 sm:gap-3"
       >
-        {/* Logo */}
         <LogoPlaceholder />
-
-        {/* Company name */}
         <div className="leading-tight">
           <div
             className="font-bold tracking-tight text-neutral-900"
-            style={{ fontSize: 15, letterSpacing: "-0.02em" }}
+            style={{ fontSize: 14, letterSpacing: "-0.02em" }}
           >
             Canaan
           </div>
           <div
             className="font-semibold tracking-tight text-neutral-500"
-            style={{ fontSize: 11, letterSpacing: "0.01em" }}
+            style={{ fontSize: 10, letterSpacing: "0.01em" }}
           >
             Global International
           </div>
         </div>
       </div>
 
-      {/* ── TOP RIGHT — nav (desktop) + hamburger (mobile) ── */}
-      <div className="fixed z-50 top-0 right-0 bg-[#f5f4f0] backdrop-blur-sm px-5 py-4 sm:px-7 sm:py-5 rounded-bl-2xl flex items-center gap-3 z-50">
+      {/* ── TOP RIGHT — desktop nav + hamburger ── */}
+      <div className="fixed z-50 top-0 right-0 bg-[#f5f4f0] px-4 py-3 sm:px-7 sm:py-5 rounded-bl-2xl flex items-center gap-3">
 
-        {/* Desktop nav pill */}
+        {/* Desktop nav */}
         <nav className="hidden sm:flex items-center bg-black/[0.07] border border-black/10 rounded-full pl-4 pr-1.5 h-11 gap-0">
           {NAV_ITEMS.map((item) => (
             <button
@@ -109,32 +111,54 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile hamburger */}
+        {/* Mobile hamburger — 44×44 tap target */}
         <button
-          className="sm:hidden flex flex-col gap-1.5 p-2"
+          className="sm:hidden w-11 h-11 flex items-center justify-center rounded-xl hover:bg-black/5 transition-colors"
           onClick={() => setMobileOpen((o) => !o)}
-          aria-label="Toggle menu"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
-          <span className={`block h-0.5 w-5 bg-neutral-900 transition-all duration-200 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block h-0.5 w-5 bg-neutral-900 transition-all duration-200 ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block h-0.5 w-5 bg-neutral-900 transition-all duration-200 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          {mobileOpen
+            ? <X size={20} className="text-neutral-900" />
+            : <Menu size={20} className="text-neutral-900" />
+          }
         </button>
-
-        {/* Mobile dropdown nav */}
-        {mobileOpen && (
-          <div className="absolute top-20 left-4 right-4 z-50 sm:hidden flex flex-col bg-[#f5f4f0] backdrop-blur-md border border-black/10 rounded-xl px-4 py-3 gap-1">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item}
-                onClick={() => navigateTo(item)}
-                className="text-left text-neutral-900 font-medium text-[15px] py-2 border-b border-black/5 last:border-0 hover:text-neutral-500 transition-colors"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
+
+      {/* ── MOBILE MENU — full-screen overlay, fixed to viewport ── */}
+      {mobileOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm sm:hidden"
+            onClick={() => setMobileOpen(false)}
+          />
+
+          {/* Drawer — slides down from top, avoids both corner widgets */}
+          <div className="fixed z-40 sm:hidden"
+            style={{
+              top: "4.5rem",          // clears the ~72px top bar
+              left: "0.75rem",
+              right: "0.75rem",
+            }}
+          >
+            <div className="bg-[#f5f4f0] border border-black/10 rounded-2xl overflow-hidden shadow-lg">
+              {NAV_ITEMS.map((item, i) => (
+                <button
+                  key={item}
+                  onClick={() => navigateTo(item)}
+                  className={`w-full text-left px-5 py-4 text-[15px] font-medium transition-colors
+                    hover:bg-black/5 active:bg-black/10
+                    ${i < NAV_ITEMS.length - 1 ? "border-b border-black/5" : ""}
+                    text-neutral-900`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
