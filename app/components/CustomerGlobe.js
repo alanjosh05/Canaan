@@ -47,21 +47,19 @@ function makeLabelEl(d) {
   const wrap = document.createElement("div");
   wrap.dataset.lat = d.lat;
   wrap.dataset.lng = d.lng;
-  wrap.style.cssText = "pointer-events:none; display:flex; flex-direction:column; align-items:center; gap:4px;";
+  wrap.style.cssText = "pointer-events:none; display:flex; flex-direction:column; align-items:center; gap:3px;";
 
-  // Dot
   const dot = document.createElement("div");
   dot.style.cssText = `
-    width: ${d.isHub ? 8 : 6}px;
-    height: ${d.isHub ? 8 : 6}px;
+    width: ${d.isHub ? 9 : 7}px;
+    height: ${d.isHub ? 9 : 7}px;
     border-radius: 50%;
-    background: ${d.isHub ? "#1a1916" : "rgba(26,25,22,0.55)"};
-    border: ${d.isHub ? "2px solid rgba(255,255,255,0.7)" : "1.5px solid rgba(255,255,255,0.5)"};
-    box-shadow: 0 0 ${d.isHub ? 8 : 5}px rgba(0,0,0,0.3);
+    background: ${d.isHub ? "#1a1916" : "rgba(26,25,22,0.65)"};
+    border: ${d.isHub ? "2px solid rgba(255,255,255,0.85)" : "1.5px solid rgba(255,255,255,0.6)"};
+    box-shadow: 0 0 ${d.isHub ? 10 : 6}px rgba(0,0,0,0.35);
     flex-shrink: 0;
   `;
 
-  // Label pill
   const pill = document.createElement("div");
   pill.style.cssText = `
     font-family: system-ui, -apple-system, sans-serif;
@@ -69,14 +67,14 @@ function makeLabelEl(d) {
     font-weight: ${d.isHub ? 700 : 600};
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: ${d.isHub ? "#1a1916" : "rgba(26,25,22,0.75)"};
-    background: rgba(245,244,240,0.88);
-    border: 1px solid rgba(0,0,0,${d.isHub ? 0.12 : 0.08});
+    color: ${d.isHub ? "#1a1916" : "rgba(26,25,22,0.8)"};
+    background: rgba(245,244,240,0.92);
+    border: 1px solid rgba(0,0,0,${d.isHub ? 0.14 : 0.08});
     border-radius: 6px;
     padding: 2px 7px;
     white-space: nowrap;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.12);
   `;
   pill.textContent = d.label;
 
@@ -84,7 +82,6 @@ function makeLabelEl(d) {
   wrap.appendChild(pill);
   return wrap;
 }
-
 export default function CustomerGlobeSection() {
   const globeRef = useRef(null);
   const containerRef = useRef(null);
@@ -93,6 +90,7 @@ export default function CustomerGlobeSection() {
   const [globeReady, setGlobeReady] = useState(false);
   const [visible, setVisible] = useState(false);
   const [hoveredRoute, setHoveredRoute] = useState(null);
+  const [selectedDest,  setSelectedDest]  = useState(null);
 
   // ── Resize ────────────────────────────────────────────────────
   useEffect(() => {
@@ -143,6 +141,25 @@ export default function CustomerGlobeSection() {
       controls.removeEventListener("end", resume);
     };
   }, [globeReady]);
+
+  const flyTo = (lat, lng) => {
+  if (!globeRef.current) return;
+  const gl = globeRef.current;
+  const controls = gl.controls();
+
+  // Pause auto-rotate while flying
+  controls.autoRotate = false;
+
+  gl.pointOfView(
+    { lat, lng, altitude: 2.0 },
+    1200 // animation duration ms
+  );
+
+  // Resume auto-rotate after fly completes
+  setTimeout(() => {
+    controls.autoRotate = true;
+  }, 1800);
+};
 
   // ── Arc color ─────────────────────────────────────────────────
   const arcColor = (d) => {
@@ -276,12 +293,7 @@ export default function CustomerGlobeSection() {
                   arc ? ROUTES.find((x) => x.from === arc.from && x.to === arc.to) ?? null : null
                 )
               }
-              pointsData={[{ lat: 8.76, lng: 78.13 }]}
-              pointLat="lat"
-              pointLng="lng"
-              pointAltitude={0.02}
-              pointRadius={0.5}
-              pointColor={() => "#1a1916"}
+              
               htmlElementsData={LABEL_POINTS}
               htmlLat={(d) => d.lat}
               htmlLng={(d) => d.lng}
@@ -337,58 +349,91 @@ export default function CustomerGlobeSection() {
           </div>
 
           {/* Routes list card */}
-          <div className="relative flex-1 bg-white/80 border border-black/10 rounded-2xl overflow-hidden">
+<div className="relative flex-1 bg-white/80 border border-black/10 rounded-2xl overflow-hidden">
 
-            {/* TOP LEFT */}
-            <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-br-2xl z-10">
-              <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
-                Destinations
-              </span>
-            </div>
+  {/* TOP LEFT */}
+  <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-br-2xl z-10">
+    <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
+      Destinations
+    </span>
+  </div>
 
-            <div className="flex flex-col pt-12 pb-3 px-4">
-              {ROUTES.map((r, i) => (
-                <div
-                  key={r.to}
-                  onMouseEnter={() => setHoveredRoute(r)}
-                  onMouseLeave={() => setHoveredRoute(null)}
-                  className={`flex items-center justify-between py-2.5 border-b border-black/5 last:border-0 cursor-default transition-all duration-200 ${hoveredRoute?.to === r.to ? "opacity-100" : "opacity-60 hover:opacity-100"
-                    }`}
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-200 ${hoveredRoute?.to === r.to ? "bg-neutral-900" : "bg-neutral-300"
-                      }`} />
-                    <span className="text-xs font-medium text-neutral-900 tracking-tight">
-                      {r.to}
-                    </span>
-                  </div>
-                  <ArrowRight
-                    size={10}
-                    className={`transition-colors duration-200 ${hoveredRoute?.to === r.to ? "text-neutral-900" : "text-neutral-300"
-                      }`}
-                  />
-                </div>
-              ))}
-            </div>
+  {/* TOP RIGHT — selected indicator */}
+  {selectedDest && (
+    <div className="absolute top-0 right-0 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-bl-2xl z-10">
+      <span className="text-[9px] font-medium text-neutral-500 tracking-tight">
+        → {selectedDest}
+      </span>
+    </div>
+  )}
+
+  <div className="flex flex-col pt-12 pb-3 px-4">
+    {ROUTES.map((r) => {
+      // Find matching label point for coordinates
+      const point = LABEL_POINTS.find((p) => p.label === r.to);
+      const isSelected = selectedDest === r.to;
+      const isHovered  = hoveredRoute?.to === r.to;
+
+      return (
+        <div
+          key={r.to}
+          onMouseEnter={() => setHoveredRoute(r)}
+          onMouseLeave={() => setHoveredRoute(null)}
+          onClick={() => {
+            if (!point) return;
+            setSelectedDest(r.to);
+            flyTo(point.lat, point.lng);
+          }}
+          className={`flex items-center justify-between py-2.5 border-b border-black/5 last:border-0 cursor-pointer transition-all duration-200 ${
+            isSelected || isHovered ? "opacity-100" : "opacity-55 hover:opacity-100"
+          }`}
+        >
+          <div className="flex items-center gap-2.5">
+            <div
+              className="w-1.5 h-1.5 rounded-full transition-colors duration-200"
+              style={{
+                background: isSelected
+                  ? "#1a1916"
+                  : isHovered
+                  ? "rgba(26,25,22,0.5)"
+                  : "#d4d0ca",
+                transform: isSelected ? "scale(1.4)" : "scale(1)",
+                transition: "background 0.2s, transform 0.2s",
+              }}
+            />
+            <span
+              className="text-xs tracking-tight transition-all duration-200"
+              style={{
+                fontWeight: isSelected ? 700 : 500,
+                color: isSelected ? "#1a1916" : "#374151",
+              }}
+            >
+              {r.to}
+            </span>
           </div>
+
+          <div
+            className="w-5 h-5 rounded-full border flex items-center justify-center transition-all duration-200"
+            style={{
+              background:   isSelected ? "#1a1916" : "transparent",
+              borderColor:  isSelected ? "#1a1916" : "rgba(0,0,0,0.1)",
+            }}
+          >
+            <ArrowRight
+              size={9}
+              style={{ color: isSelected ? "#f5f4f0" : "#c8c5be" }}
+            />
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
         </div>
       </div>
 
       {/* ── BOTTOM STRIP ── */}
-      <div className="flex flex-wrap gap-2 px-1">
-        {[
-          "Tuticorin Hub", "China", "UAE", "Singapore",
-          "United Kingdom", "Germany", "USA", "Australia",
-          "Saudi Arabia", "Malaysia", "Netherlands", "South Africa",
-        ].map((tag) => (
-          <span
-            key={tag}
-            className="bg-white/80 border border-black/10 text-neutral-700 text-xs font-medium px-4 py-2 rounded-full tracking-tight"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      
 
     </section>
   );

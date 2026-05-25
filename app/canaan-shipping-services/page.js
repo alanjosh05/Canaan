@@ -282,10 +282,10 @@ export default function CanaanShippingServicesPage() {
                     <div className="absolute inset-0 bg-black/45" />
 
                     {/* TOP LEFT */}
-                    
+
 
                     {/* TOP RIGHT */}
-                    
+
 
                     {/* BOTTOM */}
                     <div className="absolute bottom-0 left-0 right-0 sm:right-auto bg-white/90 backdrop-blur-sm px-5 py-5 sm:px-7 sm:py-6 rounded-tr-2xl z-10">
@@ -362,15 +362,30 @@ export default function CanaanShippingServicesPage() {
 
                     {/* Map / location card */}
                     <div className="relative rounded-2xl overflow-hidden min-h-[260px]">
-                        <img
-                            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2070"
-                            alt="Tuticorin location"
-                            className="w-full h-full object-cover absolute inset-0"
+
+                        {/* Google Maps iframe */}
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.3526!2d78.1304!3d8.7612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b03ef5555555555%3A0x1!2sZion+Nagar%2C+Puthukottai%2C+Tuticorin%2C+Tamil+Nadu+628103!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+                            width="100%"
+                            height="100%"
+                            style={{
+                                position: "absolute",
+                                inset: 0,
+                                border: 0,
+                                minHeight: 260,
+                                filter: "grayscale(15%) contrast(1.05) brightness(0.98)",
+                            }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Canaan Shipping Services — Tuticorin Head Office"
                         />
-                        <div className="absolute inset-0 bg-black/35" />
+
+                        {/* Subtle overlay so overlays stay readable */}
+                        <div className="absolute inset-0 bg-white/5 pointer-events-none" />
 
                         {/* TOP LEFT */}
-                        <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-br-2xl z-10">
+                        <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-br-2xl z-10 pointer-events-none">
                             <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
                                 Our location
                             </span>
@@ -378,20 +393,26 @@ export default function CanaanShippingServicesPage() {
 
                         {/* BOTTOM */}
                         <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm px-5 py-5 rounded-t-2xl z-10 flex items-end justify-between">
-                            <div>
+                            <div className="pointer-events-none">
                                 <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400 mb-1">
                                     Head office
                                 </p>
                                 <p className="text-base font-bold tracking-[-0.02em] text-neutral-900 leading-tight">
                                     Tuticorin, Tamil Nadu
                                 </p>
-                                <p className="text-xs text-neutral-400 mt-0.5">
-                                    India — 628 103
+                                <p className="text-xs text-neutral-400 mt-0.5 leading-snug">
+                                    3/802-124, Zion Nagar, Theri Road<br />
+                                    Puthukottai — 628 103
                                 </p>
                             </div>
-                            <div className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center shrink-0">
-                                <ArrowRight size={13} className="text-neutral-500" />
-                            </div>
+                            <a
+                                href="https://maps.google.com/?q=Zion+Nagar+Puthukottai+Tuticorin+Tamil+Nadu+628103"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center shrink-0 hover:bg-neutral-900 hover:border-neutral-900 transition-all duration-300 ml-3"
+                            >
+                                <ArrowRight size={13} className="text-neutral-500 hover:text-white transition-colors" />
+                            </a>
                         </div>
                     </div>
                 </div>
