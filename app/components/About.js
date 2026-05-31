@@ -44,7 +44,7 @@ export default function AboutSection() {
 
         {/* ── TOP LEFT — label ── */}
         <div className="absolute top-0 left-0 bg-[#f5f4f0] backdrop-blur-sm px-4 py-3 sm:px-7 sm:py-5 rounded-br-2xl z-10">
-          <span className="text-[10px] sm:text-xs font-medium tracking-[0.12em] uppercase text-neutral-400">
+          <span className="text-[10px] sm:text-xs font-medium tracking-[0.12em] uppercase text-[#85660c]">
             Who we are
           </span>
         </div>
@@ -52,7 +52,7 @@ export default function AboutSection() {
         {/* ── TOP RIGHT — Est. badge ── */}
         <div className="absolute top-0 right-0 bg-[#f5f4f0] backdrop-blur-sm px-4 py-3 sm:px-7 sm:py-5 rounded-bl-2xl z-10 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-          <span className="text-[11px] sm:text-sm font-medium text-neutral-900 tracking-tight">
+          <span className="text-[11px] sm:text-sm font-medium text-[#0a0908] tracking-tight">
             Est. 2009
             <span className="hidden sm:inline"> · Worldwide operations</span>
           </span>
@@ -61,15 +61,15 @@ export default function AboutSection() {
         {/* ── MOBILE LAYOUT — full bottom overlay ── */}
         <div className="sm:hidden absolute bottom-0 left-0 right-0 bg-[#f5f4f0] backdrop-blur-sm px-5 py-6 z-10 rounded-t-2xl flex flex-col gap-4">
 
-          <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
+          <p className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#85660c]">
             Canaan Global International
           </p>
 
-          <h2 className="text-2xl font-bold tracking-[-0.03em] leading-[1.18] text-neutral-900">
+          <h2 className="text-2xl font-bold tracking-[-0.03em] leading-[1.18] text-[#0a0908]">
             Moving cargo across<br />borders, seamlessly
           </h2>
 
-          <p className="text-sm text-neutral-500 leading-relaxed">
+          <p className="text-sm text-neutral-600 leading-relaxed">
             A full-service international logistics company specializing in
             freight forwarding, customs clearance, and supply chain
             management — connecting businesses to the world.
@@ -79,7 +79,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-3 gap-2 py-4 border-y border-black/5">
             {STATS.map(({ num, label }) => (
               <div key={label} className="flex flex-col gap-0.5">
-                <span className="text-xl font-bold tracking-[-0.03em] text-neutral-900">{num}</span>
+                <span className="text-xl font-bold tracking-[-0.03em] text-[#0a0908]">{num}</span>
                 <span className="text-[10px] text-neutral-400 leading-tight">{label}</span>
               </div>
             ))}
@@ -95,7 +95,7 @@ export default function AboutSection() {
             ))}
           </ul>
 
-          <button className="group flex items-center justify-center gap-2 bg-neutral-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-800 transition-colors w-full">
+          <button className="group flex items-center justify-center gap-2 bg-[#0a0908] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-800 transition-colors w-full">
             Our services <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -103,15 +103,15 @@ export default function AboutSection() {
         {/* ── DESKTOP BOTTOM LEFT — heading + bio + pillars + CTA ── */}
         <div className="hidden sm:flex absolute bottom-0 left-0 sm:right-[36%] bg-[#f5f4f0] backdrop-blur-sm px-7 py-8 rounded-tr-2xl z-10 flex-col gap-4">
 
-          <p className="text-xs font-medium tracking-[0.12em] uppercase text-neutral-400">
+          <p className="text-xs font-medium tracking-[0.12em] uppercase text-[#85660c]">
             Canaan Global International
           </p>
 
-          <h2 className="text-3xl lg:text-[2.4rem] font-bold tracking-[-0.03em] leading-[1.18] text-neutral-900">
+          <h2 className="text-3xl lg:text-[2.4rem] font-bold tracking-[-0.03em] leading-[1.18] text-[#0a0908]">
             Moving cargo across<br />borders, seamlessly
           </h2>
 
-          <p className="text-[15px] text-neutral-500 leading-relaxed max-w-sm">
+          <p className="text-[15px] text-neutral-600 leading-relaxed max-w-sm">
             A full-service international logistics company specializing in
             freight forwarding, customs clearance, and supply chain
             management — connecting businesses to the world with speed,
@@ -123,7 +123,7 @@ export default function AboutSection() {
               <li
                 key={text}
                 style={{ transitionDelay: isVisible ? `${idx * 80}ms` : "0ms" }}
-                className={`flex items-center gap-2.5 text-sm text-neutral-700 transition-all duration-500 ease-out transform ${
+                className={`flex items-center gap-2.5 text-sm text-neutral-600 transition-all duration-500 ease-out transform ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
                 }`}
               >
@@ -133,7 +133,7 @@ export default function AboutSection() {
             ))}
           </ul>
 
-          <button className="group flex items-center gap-2 bg-neutral-900 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-800 transition-all duration-300 self-start active:scale-95">
+          <button className="group flex items-center gap-2 bg-[#0a0908] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-neutral-800 transition-all duration-300 self-start active:scale-95">
             Our services <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-300" />
           </button>
         </div>
@@ -148,7 +148,7 @@ export default function AboutSection() {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
               }`}
             >
-              <span className="text-4xl font-bold tracking-[-0.04em] text-neutral-900 leading-none hover:scale-105 transition-transform duration-300 origin-left cursor-default">
+              <span className="text-4xl font-bold tracking-[-0.04em] text-[#0a0908] leading-none hover:scale-105 transition-transform duration-300 origin-left cursor-default">
                 {num}
               </span>
               <span className="text-sm text-neutral-400 tracking-tight">{label}</span>

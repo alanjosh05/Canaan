@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useCallback, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function DavidHazHero() {
   const imgRef     = useRef(null);
@@ -8,6 +10,15 @@ export default function DavidHazHero() {
   const sectionRef = useRef(null);
   const rafRef     = useRef(null);
   const scrollRaf  = useRef(null);
+
+  useEffect(() => {
+      AOS.init({
+        duration: 600,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 0,
+      });
+    }, []);
 
   // ── Cursor micro-parallax ─────────────────────────────────────
   const handleMouseMove = useCallback((e) => {
@@ -139,7 +150,7 @@ export default function DavidHazHero() {
         >
           {/* Eyebrow */}
           <p
-            className="font-medium uppercase text-white/55"
+            className="font-medium uppercase text-white/60"
             style={{
               fontSize: "clamp(9px, 2vw, 11px)",
               letterSpacing: "0.18em",
@@ -190,7 +201,7 @@ export default function DavidHazHero() {
           <div style={{
             width: "2.5rem",
             height: "2px",
-            background: "rgba(210,165,45,0.85)",
+            background: "#a3a3a3ff",
             margin: "clamp(0.75rem, 2.5vw, 1.2rem) 0 clamp(0.5rem, 2vw, 1rem)",
             transformOrigin: "left center",
             animation: "goldBarDraw 0.55s cubic-bezier(0.16,1,0.3,1) 0.55s both",
@@ -198,7 +209,7 @@ export default function DavidHazHero() {
 
           {/* Tagline — FIX: flex-wrap so it never clips; smaller base size on mobile */}
           <p
-            className="font-medium uppercase text-white/75"
+            className="font-medium uppercase text-white/60"
             style={{
               fontSize: "clamp(10px, 3vw, 18px)",
               letterSpacing: "0.15em",
@@ -223,15 +234,15 @@ export default function DavidHazHero() {
         </div>
 
         {/* ── BOTTOM RIGHT — scroll indicator ── */}
-        <div className="absolute bottom-0 right-0 z-10 bg-[#f5f4f0] px-4 py-3 sm:px-7 sm:py-5 rounded-tl-2xl flex items-center gap-2">
-          <span className="hidden sm:inline text-[11px] font-medium text-neutral-400 tracking-[0.1em] uppercase">
+        <div data-aos="fade-up-left" className="absolute bottom-0 right-0 z-10 bg-[#f5f4f0] px-4 py-3 sm:px-7 sm:py-5 rounded-tl-2xl flex items-center gap-2">
+          <span className="hidden sm:inline text-[11px] font-bold text-[#737373] tracking-[0.1em] uppercase">
             Scroll
           </span>
           <div
             className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-neutral-300 flex items-center justify-center"
             style={{ animation: "heroPulseDown 2s cubic-bezier(0.45,0,0.55,1) infinite" }}
           >
-            <ArrowDown size={11} className="text-neutral-500" />
+            <ArrowDown size={11} className="text-neutral-600" />
           </div>
         </div>
 

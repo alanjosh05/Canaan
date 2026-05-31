@@ -82,7 +82,7 @@ export default function WorldNetworkSection() {
 
         {/* TOP LEFT — label */}
         <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-7 sm:py-5 rounded-br-2xl z-10">
-          <span className="text-[10px] sm:text-xs font-medium tracking-[0.12em] uppercase text-neutral-400">
+          <span className="text-[10px] sm:text-xs font-medium tracking-[0.12em] uppercase text-[#85660c]">
             World Network
           </span>
         </div>
@@ -90,14 +90,14 @@ export default function WorldNetworkSection() {
         {/* TOP RIGHT — live badge */}
         <div className="absolute top-0 right-0 bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-7 sm:py-5 rounded-bl-2xl z-10 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-          <span className="text-[11px] sm:text-sm font-medium text-neutral-900 tracking-tight">
+          <span className="text-[11px] sm:text-sm font-medium text-[#0a0908] tracking-tight">
             30+ countries active
           </span>
         </div>
 
         {/* BOTTOM LEFT — heading */}
         <div className="absolute bottom-0 left-0 right-0 sm:right-auto bg-white/90 backdrop-blur-sm px-5 py-5 sm:px-7 sm:py-6 rounded-tr-2xl z-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-bold tracking-[-0.03em] leading-[1.18] text-neutral-900">
+          <h2 className="text-2xl sm:text-3xl lg:text-[2.4rem] font-bold tracking-[-0.03em] leading-[1.18] text-[#0a0908]">
             Connecting the world,<br className="hidden sm:block" /> one shipment at a time
           </h2>
         </div>
@@ -106,10 +106,10 @@ export default function WorldNetworkSection() {
         <div className="hidden sm:flex absolute bottom-0 right-0 bg-white/90 backdrop-blur-sm px-7 py-6 rounded-tl-2xl z-10 items-center gap-3">
           <Globe size={16} className="text-neutral-400 animate-spin-slow" />
           <div>
-            <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+            <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-[#85660c]">
               Total shipments
             </p>
-            <p className="text-lg font-bold tracking-[-0.03em] text-neutral-900">
+            <p className="text-lg font-bold tracking-[-0.03em] text-[#0a0908]">
               50,000+ delivered
             </p>
           </div>
@@ -126,7 +126,7 @@ export default function WorldNetworkSection() {
 
           {/* TOP LEFT — label */}
           <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-5 sm:py-4 rounded-br-2xl z-10">
-            <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
+            <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#85660c]">
               Active routes
             </span>
           </div>
@@ -142,7 +142,7 @@ export default function WorldNetworkSection() {
               <span className="text-[10px] text-neutral-400">Mid</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-neutral-900" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0a0908]" />
               <span className="text-[10px] text-neutral-400">High</span>
             </div>
           </div>
@@ -187,8 +187,8 @@ export default function WorldNetworkSection() {
                   <Icon size={13} className="text-neutral-400" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold tracking-[-0.04em] text-neutral-900">{num}</p>
-                  <p className="text-[10px] font-medium tracking-[0.08em] uppercase text-neutral-400 mt-0.5">{label}</p>
+                  <p className="text-2xl font-bold tracking-[-0.04em] text-[#0a0908]">{num}</p>
+                  <p className="text-[10px] font-medium tracking-[0.08em] uppercase text-[#85660c] mt-0.5">{label}</p>
                 </div>
               </div>
             ))}
@@ -204,7 +204,7 @@ export default function WorldNetworkSection() {
 
             {/* TOP LEFT — label */}
             <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-br-2xl z-10">
-              <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
+              <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-[#85660c]">
                 Key regions
               </span>
             </div>
@@ -219,14 +219,14 @@ export default function WorldNetworkSection() {
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold tracking-tight text-neutral-900">
+                    <p className="text-sm font-semibold tracking-tight text-[#0a0908]">
                       {region.label}
                     </p>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-xs font-semibold text-neutral-900 bg-black/5 px-2.5 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-[#0a0908] bg-black/5 px-2.5 py-1 rounded-full">
                         {region.shipments}
                       </span>
-                      <div className={`w-6 h-6 rounded-full border border-black/10 flex items-center justify-center transition-all duration-300 ${activeRegion === i ? "rotate-90 bg-neutral-900 border-neutral-900 text-white" : "text-neutral-400"}`}>
+                      <div className={`w-6 h-6 rounded-full border border-black/10 flex items-center justify-center transition-all duration-300 ${activeRegion === i ? "rotate-90 bg-[#0a0908] border-[#0a0908] text-white" : "text-neutral-400"}`}>
                         <ArrowRight size={11} className={`${activeRegion === i ? "text-white" : "text-neutral-400"} transition-colors`} />
                       </div>
                     </div>
@@ -256,7 +256,7 @@ export default function WorldNetworkSection() {
         ].map((tag) => (
           <span
             key={tag}
-            className="bg-white/80 border border-black/10 text-neutral-700 text-xs font-medium px-4 py-2 rounded-full tracking-tight hover:bg-[#1a1916] hover:text-[#f5f4f0] hover:border-[#1a1916] transition-all duration-300 cursor-pointer"
+            className="bg-white/80 border border-black/10 text-neutral-600 text-xs font-medium px-4 py-2 rounded-full tracking-tight hover:bg-[#0a0908] hover:text-[#f5f4f0] hover:border-[#0a0908] transition-all duration-300 cursor-pointer"
           >
             {tag}
           </span>

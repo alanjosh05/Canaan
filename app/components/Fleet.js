@@ -94,7 +94,7 @@ export default function FleetSection() {
         className="sticky top-0 h-screen flex flex-col overflow-hidden p-4 sm:p-5 gap-4"
       >
         {/* Header */}
-        <p className="text-[22px] sm:text-[40px] text-center font-medium tracking-[0.12em] uppercase text-neutral-500 shrink-0">
+        <p className="text-[22px] sm:text-[40px] text-center font-medium tracking-[0.12em] uppercase text-black shrink-0">
           Our Fleet
         </p>
 
@@ -132,7 +132,7 @@ export default function FleetSection() {
 
                 {/* TOP LEFT — tag badge */}
                 <div className="absolute top-0 left-0 bg-[#f5f4f0] px-3 py-2 sm:px-4 sm:py-2.5 rounded-br-2xl z-10">
-                  <span className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+                  <span className="text-[10px] font-bold tracking-[0.1em] uppercase text-[#85660c]">
                     {vehicle.tag}
                   </span>
                 </div>
@@ -140,15 +140,15 @@ export default function FleetSection() {
                 {/* TOP RIGHT — capacity */}
                 <div className="absolute top-0 right-0 bg-[#f5f4f0] px-3 py-2 sm:px-4 sm:py-2.5 rounded-bl-2xl z-10 flex items-center gap-1.5">
                   <Weight size={12} className="text-neutral-400" />
-                  <span className="text-[11px] font-semibold text-neutral-900">{vehicle.capacity}</span>
+                  <span className="text-[11px] font-semibold text-[#0a0908]">{vehicle.capacity}</span>
                 </div>
 
                 {/* BOTTOM — name + type */}
                 <div className="absolute bottom-0 left-0 right-0 bg-[#f5f4f0] px-4 py-4 sm:px-5 sm:py-5 rounded-t-2xl z-10">
-                  <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400 mb-0.5">
+                  <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-[#85660c] mb-0.5">
                     {vehicle.type}
                   </p>
-                  <h3 className="text-base sm:text-lg font-bold tracking-[-0.02em] text-neutral-900">
+                  <h3 className="text-base sm:text-lg font-bold tracking-[-0.02em] text-[#0a0908]">
                     {vehicle.name}
                   </h3>
                 </div>
@@ -158,11 +158,11 @@ export default function FleetSection() {
         </div>
 
         {/* Bottom tags strip */}
-        <div className="flex flex-wrap gap-2 px-1 shrink-0">
+        <div className="flex flex-wrap gap-2 px-1 shrink-0 ">
           {["Flatbed", "Semi Trailer", "Box Truck", "Tanker", "Refrigerated", "Heavy Hauler", "GPS Tracked", "24/7 Support"].map((tag) => (
             <span
               key={tag}
-              className="bg-white/80 border border-black/10 text-neutral-700 text-xs font-medium px-4 py-2 rounded-full tracking-tight"
+              className="bg-white/80 border border-black/10 text-neutral-600 text-xs font-medium px-4 py-2 rounded-full tracking-tight"
             >
               {tag}
             </span>
