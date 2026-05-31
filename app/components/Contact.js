@@ -56,7 +56,7 @@ export default function ContactSection() {
     >
 
       {/* ── HEADER CARD ── */}
-      <p className={`text-[22px] sm:text-[40px] text-center font-medium tracking-[0.12em] uppercase text-neutral-500 shrink-0 transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      <p className={`text-[22px] sm:text-[40px] text-center font-medium tracking-[0.12em] uppercase text-neutral-600 shrink-0 transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
         Contact Us
       </p>
@@ -76,15 +76,15 @@ export default function ContactSection() {
                 }`}
             >
               {/* Top icon */}
-              <div className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center mb-3 group-hover:bg-[#1a1916] group-hover:text-[#f5f4f0] transition-colors duration-300">
-                <Icon size={15} className="text-neutral-500 group-hover:text-white transition-colors" />
+              <div className="w-9 h-9 rounded-full border border-black/10 flex items-center justify-center mb-3 group-hover:bg-[#0a0908] group-hover:text-[#f5f4f0] transition-colors duration-300">
+                <Icon size={15} className="text-neutral-600 group-hover:text-white transition-colors" />
               </div>
 
               <div>
-                <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400 mb-0.5">
+                <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-[#85660c] mb-0.5">
                   {label}
                 </p>
-                <p className="text-sm font-semibold text-neutral-900 tracking-tight leading-snug">
+                <p className="text-sm font-semibold text-[#0a0908] tracking-tight leading-snug">
                   {value}
                 </p>
               </div>
@@ -124,10 +124,10 @@ export default function ContactSection() {
             {/* BOTTOM */}
             <div className="absolute bottom-0 left-0 right-0 bg-white/90 backdrop-blur-sm px-4 py-4 rounded-t-2xl z-10 flex items-center justify-between pointer-events-none">
               <div>
-                <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400 mb-0.5">
+                <p className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-700 mb-0.5">
                   Head office
                 </p>
-                <p className="text-base font-bold tracking-[-0.02em] text-neutral-900">
+                <p className="text-base font-bold tracking-[-0.02em] text-[#0a0908]">
                   Tuticorin, Tamil Nadu
                 </p>
                 <p className="text-[11px] text-neutral-400 mt-0.5 tracking-tight">
@@ -157,7 +157,7 @@ export default function ContactSection() {
 
           {/* TOP LEFT — label */}
           <div className="absolute top-0 left-0 bg-white/90 backdrop-blur-sm px-4 py-3 sm:px-5 sm:py-4 rounded-br-2xl z-10">
-            <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-neutral-400">
+            <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-gray-700">
               Send a message
             </span>
           </div>
@@ -168,7 +168,7 @@ export default function ContactSection() {
               <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-2 animate-bounce">
                 <span className="text-2xl text-emerald-600">✓</span>
               </div>
-              <h3 className="text-xl font-bold tracking-[-0.02em] text-neutral-900">
+              <h3 className="text-xl font-bold tracking-[-0.02em] text-[#0a0908]">
                 Message received!
               </h3>
               <p className="text-sm text-neutral-400 leading-relaxed max-w-xs">
@@ -177,7 +177,7 @@ export default function ContactSection() {
               </p>
               <button
                 onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", service: "", message: "" }); }}
-                className="mt-2 flex items-center gap-2 border border-black/15 text-neutral-700 text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 active:scale-95"
+                className="mt-2 flex items-center gap-2 border border-black/15 text-neutral-600 text-sm font-medium px-5 py-2.5 rounded-full hover:bg-black hover:text-white hover:border-black transition-all duration-300 active:scale-95"
               >
                 Send another message
               </button>
@@ -190,7 +190,7 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                 <div className={`flex flex-col gap-1.5 transition-all duration-500 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`} style={{ transitionDelay: isVisible ? "100ms" : "0ms" }}>
-                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-700">
                     Full name
                   </label>
                   <input
@@ -198,12 +198,12 @@ export default function ContactSection() {
                     value={form.name}
                     onChange={handleChange}
                     placeholder="John Smith"
-                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-300 outline-none focus:bg-white focus:border-neutral-900 focus:ring-4 focus:ring-neutral-900/5 transition-all duration-300"
+                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-[#0a0908] placeholder:text-neutral-300 outline-none focus:bg-white focus:border-[#0a0908] focus:ring-4 focus:ring-[#0a0908]/5 transition-all duration-300"
                   />
                 </div>
                 <div className={`flex flex-col gap-1.5 transition-all duration-500 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`} style={{ transitionDelay: isVisible ? "150ms" : "0ms" }}>
-                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-700">
                     Email address
                   </label>
                   <input
@@ -211,7 +211,7 @@ export default function ContactSection() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="john@company.com"
-                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-300 outline-none focus:bg-white focus:border-neutral-900 focus:ring-4 focus:ring-neutral-900/5 transition-all duration-300"
+                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-[#0a0908] placeholder:text-neutral-300 outline-none focus:bg-white focus:border-[#0a0908] focus:ring-4 focus:ring-[#0a0908]/5 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -220,7 +220,7 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                 <div className={`flex flex-col gap-1.5 transition-all duration-500 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`} style={{ transitionDelay: isVisible ? "200ms" : "0ms" }}>
-                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-700">
                     Phone number
                   </label>
                   <input
@@ -228,19 +228,19 @@ export default function ContactSection() {
                     value={form.phone}
                     onChange={handleChange}
                     placeholder="+1 (000) 000-0000"
-                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-300 outline-none focus:bg-white focus:border-neutral-900 focus:ring-4 focus:ring-neutral-900/5 transition-all duration-300"
+                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-[#0a0908] placeholder:text-neutral-300 outline-none focus:bg-white focus:border-[#0a0908] focus:ring-4 focus:ring-[#0a0908]/5 transition-all duration-300"
                   />
                 </div>
                 <div className={`flex flex-col gap-1.5 transition-all duration-500 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`} style={{ transitionDelay: isVisible ? "250ms" : "0ms" }}>
-                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+                  <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-700">
                     Service needed
                   </label>
                   <select
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-neutral-900 outline-none focus:bg-white focus:border-neutral-900 focus:ring-4 focus:ring-neutral-900/5 transition-all duration-300 appearance-none cursor-pointer"
+                    className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-[#0a0908] outline-none focus:bg-white focus:border-[#0a0908] focus:ring-4 focus:ring-[#0a0908]/5 transition-all duration-300 appearance-none cursor-pointer"
                   >
                     <option value="" disabled>Select a service</option>
                     <option>Freight Forwarding</option>
@@ -258,7 +258,7 @@ export default function ContactSection() {
               {/* Message */}
               <div className={`flex flex-col gap-1.5 mb-5 transition-all duration-500 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 }`} style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}>
-                <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-neutral-400">
+                <label className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-700">
                   Your message
                 </label>
                 <textarea
@@ -267,21 +267,19 @@ export default function ContactSection() {
                   onChange={handleChange}
                   rows={4}
                   placeholder="Tell us about your shipment requirements..."
-                  className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-300 outline-none focus:bg-white focus:border-neutral-900 focus:ring-4 focus:ring-neutral-900/5 transition-all duration-300 resize-none"
+                  className="bg-[#f5f4f0] border border-black/10 rounded-xl px-4 py-3 text-sm text-[#0a0908] placeholder:text-neutral-300 outline-none focus:bg-white focus:border-[#0a0908] focus:ring-4 focus:ring-[#0a0908]/5 transition-all duration-300 resize-none"
                 />
               </div>
 
               {/* Submit */}
               <button
                 onClick={handleSubmit}
-                className="group flex items-center justify-center gap-2 bg-neutral-900 text-white text-sm font-semibold px-5 py-3 rounded-full hover:bg-neutral-800 transition-all duration-300 w-full active:scale-98"
+                className="group flex items-center justify-center gap-2 bg-[#0a0908] text-white text-sm font-semibold px-5 py-3 rounded-full hover:bg-neutral-800 transition-all duration-300 w-full active:scale-98"
               >
                 Send message <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-300" />
               </button>
 
-              <p className="text-[10px] text-neutral-300 text-center mt-3 tracking-tight">
-                By submitting, you agree to our privacy policy. No spam, ever.
-              </p>
+              
             </div>
           )}
         </div>
@@ -297,7 +295,7 @@ export default function ContactSection() {
         ].map((tag) => (
           <span
             key={tag}
-            className="bg-white/80 border border-black/10 text-neutral-700 text-xs font-medium px-4 py-2 rounded-full tracking-tight hover:bg-[#1a1916] hover:text-[#f5f4f0] hover:border-[#1a1916] transition-all duration-300 cursor-pointer"
+            className="bg-white/80 border border-black/10 text-neutral-600 text-xs font-medium px-4 py-2 rounded-full tracking-tight hover:bg-[#0a0908] hover:text-[#f5f4f0] hover:border-[#0a0908] transition-all duration-300 cursor-pointer"
           >
             {tag}
           </span>

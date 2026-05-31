@@ -1,11 +1,6 @@
-import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Canaan Global International",
@@ -58,9 +53,12 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} h-full antialiased`}
+      className={`h-full antialiased`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Oswald:wght@500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
         {/* Canonical */}
         <link rel="canonical" href="https://www.canaanglobal.com" />
 

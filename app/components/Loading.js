@@ -169,14 +169,14 @@ export default function LoadingPage({ onComplete, duration = 3200 }) {
         >
           <div style={{
             width: 36, height: 36, borderRadius: 9,
-            background: "#1a1916",
+            background: "#0a0908",
             display: "flex", alignItems: "center", justifyContent: "center",
             flexShrink: 0,
           }}>
             <Anchor size={15} color="#f5f4f0" strokeWidth={2} />
           </div>
           <div style={{ lineHeight: 1.15 }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: "#1a1916", letterSpacing: "-0.02em" }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#0a0908", letterSpacing: "-0.02em" }}>
               Canaan
             </div>
             <div style={{ fontSize: 10, fontWeight: 500, color: "#a0998c", letterSpacing: "0.02em" }}>
@@ -230,7 +230,7 @@ export default function LoadingPage({ onComplete, duration = 3200 }) {
               marginBottom: 32,
             }}
           >
-            <Anchor size={28} color="#1a1916" strokeWidth={1.5} />
+            <Anchor size={28} color="#0a0908" strokeWidth={1.5} />
           </div>
 
           {/* Company name */}
@@ -240,7 +240,7 @@ export default function LoadingPage({ onComplete, duration = 3200 }) {
               fontWeight: 800,
               letterSpacing: "-0.04em",
               lineHeight: 0.92,
-              color: "#1a1916",
+              color: "#0a0908",
               margin: 0,
               textAlign: "center",
             }}
@@ -299,7 +299,7 @@ export default function LoadingPage({ onComplete, duration = 3200 }) {
               </span>
               <span style={{
                 fontSize: 10, fontWeight: 600,
-                color: phase === "done" ? "#1a1916" : "#c8c0b8",
+                color: phase === "done" ? "#0a0908" : "#c8c0b8",
                 letterSpacing: "0.04em",
                 fontVariantNumeric: "tabular-nums",
                 transition: "color 0.4s",
@@ -317,7 +317,7 @@ export default function LoadingPage({ onComplete, duration = 3200 }) {
               <div style={{
                 height: "100%",
                 width: `${progress * 100}%`,
-                background: "#1a1916",
+                background: "#0a0908",
                 borderRadius: 99,
                 transition: "width 0.4s cubic-bezier(0.4,0,0.2,1)",
               }} />
@@ -330,7 +330,7 @@ export default function LoadingPage({ onComplete, duration = 3200 }) {
                   key={i}
                   style={{
                     width: 5, height: 5, borderRadius: "50%",
-                    background: progress >= mark ? "#1a1916" : "rgba(0,0,0,0.1)",
+                    background: progress >= mark ? "#0a0908" : "rgba(0,0,0,0.1)",
                     transition: "background 0.4s ease",
                   }}
                 />

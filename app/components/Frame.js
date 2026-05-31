@@ -157,20 +157,20 @@ export default function FrameScrollSection() {
       className="relative"
     >
       {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#0d0c0a]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#f5f4f0]">
 
         {/* Loading bar */}
         {!ready && (
-          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#0d0c0a] gap-4">
+          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-[#f5f4f0] gap-4">
             <p
               style={{ fontFamily: "Georgia, serif", letterSpacing: "0.15em" }}
-              className="text-[11px] uppercase text-neutral-500 tracking-widest"
+              className="text-[11px] uppercase text-[#85660c] tracking-widest"
             >
               Loading
             </p>
             <div className="w-48 h-[1px] bg-neutral-800 overflow-hidden">
               <div
-                className="h-full bg-[#c8b98a] transition-all duration-150"
+                className="h-full bg-[#85660c] transition-all duration-150"
                 style={{ width: `${loadPercent}%` }}
               />
             </div>
@@ -211,7 +211,7 @@ export default function FrameScrollSection() {
         {/* Top label */}
         <div className="absolute top-6 left-6 z-10">
           <span
-            className="text-[10px] uppercase tracking-[0.18em] text-neutral-500"
+            className="text-[10px] uppercase tracking-[0.18em] text-[#85660c]"
             style={{ fontFamily: "Georgia, serif" }}
           >
             Canaan Global International
@@ -242,7 +242,7 @@ export default function FrameScrollSection() {
                   width: i === activeIndex ? "28px" : "6px",
                   height: "3px",
                   borderRadius: "2px",
-                  background: i === activeIndex ? "#c8b98a" : "rgba(255,255,255,0.2)",
+                  background: i === activeIndex ? "#85660c" : "rgba(255,255,255,0.2)",
                 }}
               />
             ))}
@@ -282,12 +282,12 @@ export default function FrameScrollSection() {
           >
             <div
               className="animate-bounce"
-              style={{ color: "#c8b98a", fontSize: "18px" }}
+              style={{ color: "#85660c", fontSize: "18px" }}
             >
               ↓
             </div>
             <span
-              className="text-[10px] uppercase tracking-[0.16em] text-neutral-600"
+              className="text-[10px] uppercase tracking-[0.16em] text-[#85660c]"
               style={{ fontFamily: "Georgia, serif" }}
             >
               Scroll to explore

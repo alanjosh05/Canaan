@@ -11,10 +11,12 @@ import TimelineSection from "./components/Timeline";
 import ContactSection from "./components/Contact";
 import WorldNetworkSection from "./components/World";
 import GroupSection from "./components/Group";
+import AboutTeaserSection from "./components/AboutTeaser";
 
 const SECTIONS = [
   GroupSection,
   CustomerGlobeSection,
+  AboutTeaserSection,
   TimelineSection,
   FleetSection,
   ClientsSection,
@@ -33,7 +35,7 @@ export default function Home() {
       const { top, bottom } = el.getBoundingClientRect();
       if (!(top < window.innerHeight && bottom > 0)) {
         el.style.opacity    = "0";
-        el.style.transform  = "translateY(40px)";
+        el.style.transform  = "translateY(12px)";
         el.style.willChange = "transform, opacity";
       }
     });
@@ -46,7 +48,7 @@ export default function Home() {
           el.style.transform  = "translateY(0)";
         }
       });
-    }, 2500);
+    }, 200);
 
     const observers = [];
 
@@ -75,8 +77,8 @@ export default function Home() {
             if (entry.isIntersecting) {
               prev.style.transition =
                 "transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s ease";
-              prev.style.transform = "scale(0.96) translateY(-12px)";
-              prev.style.opacity   = "0.78";
+              prev.style.transform = "scale(0.98) translateY(-5px)";
+              prev.style.opacity   = "0.98";
             } else if (entry.boundingClientRect.top > 0) {
               prev.style.transition =
                 "transform 0.55s ease, opacity 0.55s ease";
@@ -107,7 +109,7 @@ export default function Home() {
       </div>
 
       {/* Sections wrapper: z-index 1 — scrolls over hero */}
-      <div style={{ position: "relative", zIndex: 1 }}>
+      <div style={{ position: "relative", zIndex: 1, overflow: "visible" }}>
         {SECTIONS.map((Section, i) => (
           <div
             key={i}
@@ -115,6 +117,7 @@ export default function Home() {
             style={{
               position: "relative",
               zIndex: 1,
+              overflow: "visible",
               // White bg so sections fully cover the hero as they scroll over
               backgroundColor: "#f5f4f0",
             }}
